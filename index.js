@@ -2,10 +2,10 @@ import dotenv from 'dotenv'
 import Discord, { Intents } from 'discord.js'
 import { Player } from 'discord-player'
 
-import { healthCheck } from './commands/check.js'
-import { defaultResponse } from './commands/defaultResponse.js'
-import { play } from './commands/music/playMusic.js'
-import { skip } from './commands/music/skipMusic.js'
+import { healthCheck } from './src/commands/check.js'
+import { defaultResponse } from './src/commands/defaultResponse.js'
+import { play } from './src/commands/music/playMusic.js'
+import { skip } from './src/commands/music/skipMusic.js'
 
 dotenv.config()
 
@@ -32,7 +32,7 @@ const player = new Player(client, {
 })
 
 
-client.login("OTM4MjM3NTA2NTYwODcyNTI5.YfnXxQ.GA7AAe-FadldV-RR5In4uSgGsO0")
+client.login(process.env.TOKEN)
 
 client.on("ready", () => {
   console.log(`[ON] BOT: ${client.user.tag}`),
