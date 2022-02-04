@@ -1,10 +1,10 @@
-export function defaultResponse (msg) {
-  let author = msg.author.tag
-  author = author.split("#")
+import { MessageEmbed } from 'discord.js'
 
-  return msg.reply(
-    {
-      content: `${author[0]} Desculpe eu ainda não tenho este comando :(`
-    }
-  )
+export function defaultResponse (msg, client) {
+  let author = msg.author.tag.split("#")[0]
+  const embed = new MessageEmbed()
+    .setColor("#FF0000")
+    .setDescription(`${author} eu ainda não tenho esse comando!`)
+    .setTitle(`❓ Comando não reconhecido!`)
+  msg.channel.send({ embeds: [embed] });
 }
