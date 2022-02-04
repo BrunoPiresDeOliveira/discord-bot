@@ -1,6 +1,6 @@
-import { MessageEmbed } from 'discord.js'
+const { MessageEmbed } = require('discord.js')
 
-export async function skip(msg, client, player) {     
+async function skip(msg, client, player) {     
   const queue = player.getQueue(msg.guild.id)
   if (!queue) {
     const queueEmpty = new MessageEmbed()
@@ -30,3 +30,5 @@ export async function skip(msg, client, player) {
     msg.reply({ embeds: [playNow] });
   return
 }
+
+module.exports = { skip }

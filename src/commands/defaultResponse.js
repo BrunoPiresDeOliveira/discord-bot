@@ -1,6 +1,6 @@
-import { MessageEmbed } from 'discord.js'
+const { MessageEmbed } = require('discord.js')
 
-export function defaultResponse (msg, client) {
+function defaultResponse (msg, client) {
   let author = msg.author.tag.split("#")[0]
   const embed = new MessageEmbed()
     .setColor("#FF0000")
@@ -8,3 +8,5 @@ export function defaultResponse (msg, client) {
     .setTitle(`❓ Comando não reconhecido!`)
   msg.channel.send({ embeds: [embed] });
 }
+
+module.exports = { defaultResponse }

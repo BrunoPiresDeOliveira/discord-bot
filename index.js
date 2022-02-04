@@ -1,15 +1,14 @@
-import dotenv from 'dotenv'
-import Discord, { Intents } from 'discord.js'
-import { Player } from 'discord-player'
+const { Client, Intents } = require('discord.js')
+const { Player } = require('discord-player')
 
-import { healthCheck } from './src/commands/check.js'
-import { defaultResponse } from './src/commands/defaultResponse.js'
-import { play } from './src/commands/music/playMusic.js'
-import { skip } from './src/commands/music/skipMusic.js'
+const { token, prefix } = require('./config.json') 
 
-dotenv.config()
+const { healthCheck } = require('./src/commands/check.js')
+const { defaultResponse } = require('./src/commands/defaultResponse.js')
+const { play } = require('./src/commands/music/playMusic.js')
+const { skip } = require('./src/commands/music/skipMusic.js')
 
-const client = new Discord.Client({
+const client = new Client({
   intents: [
     Intents.FLAGS.GUILDS,
     Intents.FLAGS.GUILD_MESSAGES,
@@ -32,21 +31,21 @@ const player = new Player(client, {
 })
 
 
-client.login(process.env.TOKEN)
+client.login(token)
 
 client.on("ready", () => {
   console.log(`[ON] BOT: ${client.user.tag}`),
   client.user.setActivity("Your song", { type: "LISTENING"})
 })
 
-const prefix = "$"
-
 client.on("messageCreate", (msg) => {
   if (msg.author.tag == client.user.tag) return
   const commandFormated = msg.content.toLowerCase()
+  console.log(prefix)
   if (!commandFormated.startsWith(prefix)) return
 
   const command = commandFormated.slice(prefix.length).trim().split(/ +/)[0]
+  console.log(command)
   switch (command) {
     case `check`:
       healthCheck(msg, client)

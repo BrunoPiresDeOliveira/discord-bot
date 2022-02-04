@@ -1,6 +1,6 @@
-import { MessageEmbed } from 'discord.js'
+const { MessageEmbed } = require('discord.js')
 
-export function healthCheck(msg, client) {
+function healthCheck(msg, client) {
   let author = msg.author.tag.split("#")[0]
   let botName = client.user.tag.split("#")[0]
   const embed = new MessageEmbed()
@@ -9,3 +9,5 @@ export function healthCheck(msg, client) {
     .setTitle(`[ON] BOT ${botName}`)
   msg.channel.send({ embeds: [embed] });
 }
+
+module.exports = { healthCheck }

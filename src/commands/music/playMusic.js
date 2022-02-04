@@ -1,6 +1,6 @@
-import { MessageEmbed } from 'discord.js'
+const { MessageEmbed } = require('discord.js')
 
-export async function play(msg, client, player, args) {  
+async function play(msg, client, player, args) {  
   args.shift()
   const search_music = args.join(" ");
 
@@ -149,3 +149,5 @@ export async function play(msg, client, player, args) {
   }
 
 }
+
+module.exports = { play }
