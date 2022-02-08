@@ -45,7 +45,6 @@ client.on("messageCreate", (msg) => {
   if (!commandFormated.startsWith(prefix)) return
 
   const command = commandFormated.slice(prefix.length).trim().split(/ +/)[0]
-  console.log(command)
   switch (command) {
     case `check`:
       healthCheck(msg, client)
