@@ -50,7 +50,7 @@ client.on("messageCreate", (msg) => {
     case `check`:
       healthCheck(msg, client)
       break
-    case `tocar`:
+    case `play`:
       const args = msg.content.slice(prefix.length).trim().split(/ +/)
       play(msg, client, player, args)
       break
