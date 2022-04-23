@@ -2,7 +2,7 @@ const { MessageEmbed } = require('discord.js')
 
 async function play(msg, client, player, args) {  
   args.shift()
-  const search_music = args.join(" ");
+  let search_music = args.join(" ");
 
   const NotOnVoiceChannel = new MessageEmbed()
     .setColor("#FF0000")
@@ -60,7 +60,7 @@ async function play(msg, client, player, args) {
   const warningSearchMusicMsg = await msg.reply({ embeds: [warningSearchMusic] });
 
   // Busca a música no youtube e retorna uma lista de músicas.
-  const youtubeResponse = await player.search(search_music, {
+  const youtubeResponse = await player.search("music" + search_music, {
     requestedBy: msg.author
   })
 
@@ -70,14 +70,6 @@ async function play(msg, client, player, args) {
     return msg.reply({ embeds: [notFoundMusic] });
   }
 
-  // Ordena a lista de músicas e deixa somente as 5 primeiras.
-  youtubeResponse.tracks.sort(function(a, b) {
-    if(a.views > b.views) {
-      return -1;
-    } else {
-      return true;
-    }
-  })
   youtubeResponse.tracks.splice(5, 15)
 
   // Envia uma mensagem com as opções de música
@@ -130,9 +122,11 @@ async function play(msg, client, player, args) {
     msg.reply({ embeds: [addToQueue] });
   } else {
     if (queue.playing) {
+      console.log(youtubeResponse.tracks[collected.first().content - 1])
       queue.addTrack(youtubeResponse.tracks[collected.first().content - 1])
       msg.reply({ embeds: [addToQueue] });
     } else {
+      console.log(youtubeResponse.tracks[collected.first().content - 1])
       queue.addTrack(youtubeResponse.tracks[collected.first().content - 1])
       const playNow = new MessageEmbed()
         .setColor("#00FF00")

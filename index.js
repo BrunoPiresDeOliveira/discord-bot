@@ -7,6 +7,11 @@ const { healthCheck } = require('./src/commands/check.js')
 const { defaultResponse } = require('./src/commands/defaultResponse.js')
 const { play } = require('./src/commands/music/playMusic.js')
 const { skip } = require('./src/commands/music/skipMusic.js')
+const { help } = require('./src/commands/help/help.js')
+const { sort } = require('./src/commands/sort/sort.js')
+const { clearQueue } = require('./src/commands/music/clearQueue.js')
+const { queue } = require('./src/commands/music/queueMusic.js')
+const { coluna } = require('./src/commands/help/coluna.js')
 
 const client = new Client({
   intents: [
@@ -41,7 +46,6 @@ client.on("ready", () => {
 client.on("messageCreate", (msg) => {
   if (msg.author.tag == client.user.tag) return
   const commandFormated = msg.content.toLowerCase()
-  console.log(prefix)
   if (!commandFormated.startsWith(prefix)) return
 
   const command = commandFormated.slice(prefix.length).trim().split(/ +/)[0]
@@ -55,6 +59,21 @@ client.on("messageCreate", (msg) => {
       break
     case `skip`:
       skip(msg, client, player)
+      break
+    case `help`:
+      help(msg, client)
+      break
+    case `sort`:
+      sort(msg, client)
+      break
+    case `clear`:
+      clearQueue(msg, player)
+      break
+    case `queue`:
+      queue(msg, player)
+      break
+    case `coluna`:
+      coluna(msg, player)
       break
     default :
       defaultResponse(msg, client)
