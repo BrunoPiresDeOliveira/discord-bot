@@ -40,7 +40,7 @@ client.login(token)
 
 client.on("ready", () => {
   console.log(`[ON] BOT: ${client.user.tag}`),
-  client.user.setActivity("Your song", { type: "LISTENING"})
+  client.user.setActivity(";help")
 })
 
 client.on("messageCreate", (msg) => {

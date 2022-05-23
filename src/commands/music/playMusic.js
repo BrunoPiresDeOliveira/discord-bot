@@ -75,7 +75,7 @@ async function play(msg, client, player, args) {
   // Envia uma mensagem com as opções de música
   const tracks = []
   for (const [index, track] of youtubeResponse.tracks.entries()) {
-    tracks.push({ name: `${index + 1} : ${track.title}`, value: "\u200B" })
+    tracks.push({ name: `${index + 1} : ${track.title}  (${track.duration})`, value: "\u200B" })
   }
   warningSearchMusicMsg.delete()
   const whatSong = new MessageEmbed()

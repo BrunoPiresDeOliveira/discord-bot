@@ -15,8 +15,9 @@ async function sort(msg, client) {
 
     msg.reply({ embeds: [response] });
     return
+  } else {
+    
   }
-    // msg.reply('test');
 }
 
 module.exports = { sort }

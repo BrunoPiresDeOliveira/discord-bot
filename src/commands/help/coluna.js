@@ -26,12 +26,14 @@ async function coluna(msg, player) {
   }
 
   // Busca a música no youtube e retorna uma lista de músicas.
-  const youtubeResponse = await player.search('https://www.youtube.com/watch?v=HVkgYMkdQjg', {
+  const youtubeResponse = await player.search('https://youtu.be/x0JAJuAuBlw', {
     requestedBy: msg.author
   })
 
-  console.log(youtubeResponse.tracks[0])
-  queue.addTracks([youtubeResponse.tracks[0]])
+  // while () {
+  //   queue.addTrack(youtubeResponse.tracks[0])
+
+  // }
 
   // Tocar as músicas que estão na fila
   if (!queue.playing) {
