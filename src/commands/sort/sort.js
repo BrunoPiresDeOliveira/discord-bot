@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js')
 
-async function sort(msg, client) {     
+async function sort(msg) {     
   const msgContent = msg.content.split(';sort')
 
   const msgSplitedByCommon = msgContent[1].split(',')

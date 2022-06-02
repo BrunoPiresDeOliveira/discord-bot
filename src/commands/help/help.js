@@ -16,11 +16,6 @@ async function help(msg, client) {
 
   ])
 
-  // .setDescription(';play  <Nome da música>  --> Para tocar uma música.')
-  // .setDescription(';skip  --> Passa para a próxima música da fila.')
-    // ';check  --> Para saber se o bot está ON. \b',
-    // ';help  --> Para ver todos os comando disponiveis.'
-
   msg.reply({ embeds: [help] });
   return
 }

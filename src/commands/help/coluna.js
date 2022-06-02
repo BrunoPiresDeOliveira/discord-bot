@@ -20,7 +20,6 @@ async function coluna(msg, player) {
       await queue.connect(msg.member.voice.channelId)
     }
   } catch (error) {
-    console.log(error.message)
     queue.destroy();
     return await msg.reply({embeds: [erroEnterVoiceChat]})
   }
@@ -30,16 +29,10 @@ async function coluna(msg, player) {
     requestedBy: msg.author
   })
 
-  // while () {
-  //   queue.addTrack(youtubeResponse.tracks[0])
-
-  // }
-
-  // Tocar as músicas que estão na fila
+  queue.addTrack(youtubeResponse.tracks[0])
   if (!queue.playing) {
     await queue.play()
   }
-
 }
 
 module.exports = { coluna }

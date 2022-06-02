@@ -122,11 +122,9 @@ async function play(msg, client, player, args) {
     msg.reply({ embeds: [addToQueue] });
   } else {
     if (queue.playing) {
-      console.log(youtubeResponse.tracks[collected.first().content - 1])
       queue.addTrack(youtubeResponse.tracks[collected.first().content - 1])
       msg.reply({ embeds: [addToQueue] });
     } else {
-      console.log(youtubeResponse.tracks[collected.first().content - 1])
       queue.addTrack(youtubeResponse.tracks[collected.first().content - 1])
       const playNow = new MessageEmbed()
         .setColor("#00FF00")

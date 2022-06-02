@@ -1,7 +1,8 @@
+require('dotenv').config();
 const { Client, Intents } = require('discord.js')
 const { Player } = require('discord-player')
 
-const { token, prefix } = require('./config.json') 
+const { token, prefix } = process.env
 
 const { healthCheck } = require('./src/commands/check.js')
 const { defaultResponse } = require('./src/commands/defaultResponse.js')
@@ -34,7 +35,6 @@ const player = new Player(client, {
   initialVolume: 50,
   bufferingTimeout: 3000,
 })
-
 
 client.login(token)
 

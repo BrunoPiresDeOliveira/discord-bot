@@ -2,7 +2,7 @@ const { MessageEmbed } = require('discord.js')
 
 async function clearQueue(msg, player) {     
   const queue = player.getQueue(msg.guild.id)
-    console.log(queue)
+
   if (!queue) {
     const queueEmpty = new MessageEmbed()
     .setColor("#FF0000")
